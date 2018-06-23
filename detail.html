@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>晒晒最萌团员证</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="MobileOptimized" content="width" />
+        <meta id="viewport" content="width=device-width, user-scalable=no,initial-scale=1" name="viewport" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+        <meta content="telephone=no" name="format-detection" />
+		<!--移动端版本兼容 -->
+		<script type="text/javascript">
+			var phoneW =  parseInt(window.screen.width),phoneScale = phoneW/640 ,ua = navigator.userAgent;
+			if (/Android (\d+\.\d+)/.test(ua)){
+				var version = parseFloat(RegExp.$1);
+				if(version>2.3){document.write('<meta name="viewport" content="width=640, initial-scale='+phoneScale+', minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+				}else{document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');}
+			} else {document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');}
+		</script>
+        <link href="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/css/all.css" type="text/css" rel="stylesheet"/>
+		<link href="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/js/upload/style.css" type="text/css" rel="stylesheet"/>
+        <link href="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/css/index.css" type="text/css" rel="stylesheet"/>
+        <script src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/js/jquery-1.11.1.min.js"></script>
+        <script src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/js/common.js"></script>
+    </head>
+    <body>	
+		<section class="main-page bg clearfix">
+			<div class="book-warp" style="padding:0;">
+				<img src="./wangjun.png"/>
+				<div class="book">
+					<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/book.png" class="book-img"/>
+					<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/book_word.png" class="book-word"/>
+				</div>
+				<div class="hand"><a class="in" href="javascript:void(0);"></a></div>
+			</div>
+			<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/xing.png" class="cai xing" />
+			<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/xing1.png" class="cai xing1" />
+			<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/ball.png" class="cai ball" />
+			<div class="detail-btns">
+				<a class="fl" href="javascript:void(0);"  onclick="showModal('#shareModal');" ><img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/share_btn.png" /></a>
+				
+								<a class="fr" href="form.php"><img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/ismy.png" /></a>
+								
+			</div>
+			<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/word1.png" class="bot-tips"/>
+		</section>
+		
+		<!-- 分享 -->
+		<div class="modal" id="shareModal" onclick="hideModal('#shareModal');">
+			<div class="modal-bg"></div>
+			<div class="modal-body share-warp">
+				<img src="http://img1.xuetang.cn/h5-video/cyl_synth_ylc/images/share.png"/>
+			</div>
+		</div>
+		
+		<script>
+			$('.hand,.book').on('click',function(){
+				$('.hand').hide();
+				$('.main-page').addClass('current');
+				setTimeout(function(){
+					$('.book .book-word').addClass('hide');
+				},1000)
+			});
+		</script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script>
+			var web_content = '晒晒最萌团员证';
+			var descr = '快打开你的专属团员证';
+			var descrr = '快打开你的专属团员证';
+			var link = 'http://h5.gstai.com/cyl_synth_ylc/detail.php?openid=odJDfjlFi6XZBBcxM7-B5-wqMxik';
+			var imgurl = 'http://h5.gstai.com/cyl_synth_ylc/images/share.jpg';
+			wx.config({
+				appId: 'wx99961ab843f829a8',
+				timestamp: 1529741701,
+				nonceStr: 'XFU7l9irQVj7R9CF',
+				signature: '878fe1b70b8c710a17c9aa02284e477768c43d48',
+				jsApiList: [
+					// 所有要调用的 API 都要加到这个列表中
+					'onMenuShareAppMessage',
+					'onMenuShareTimeline',
+					'onMenuShareQQ',
+					'onMenuShareWeibo',
+				]
+			});
+			wx.ready(function () {
+				wx.showOptionMenu();
+
+				// 2. 分享接口
+				// 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+				wx.onMenuShareAppMessage({
+					title: web_content,
+					desc: descr,
+					link: link,
+					imgUrl: imgurl,
+				});
+				// 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+				wx.onMenuShareTimeline({
+					title: descrr,
+					desc: descrr,
+					link: link,
+					imgUrl: imgurl,
+				});
+			});
+			wx.error(function (res) {
+				//alert(res.errMsg);
+			});
+		</script>
+    </body>
+</html>
